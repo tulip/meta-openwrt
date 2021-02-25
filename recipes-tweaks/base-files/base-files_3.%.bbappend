@@ -72,6 +72,8 @@ do_install_append () {
         rm -f ${STMP}/sbin/hotplug-call
 
         # From OE base-files or netbase
+        rm -f ${STMP}/etc/os-release
+        rm -f ${STMP}/usr/lib/os-release
         rm -f ${STMP}/etc/hosts
         rm -f ${STMP}/etc/rpc
         rm -f ${STMP}/etc/services
@@ -138,10 +140,6 @@ do_install_append () {
 
         chmod 0600 ${D}${sysconfdir}/shadow
         chmod 1777 ${D}/tmp
-
-        sed -i "s#%PATH%#/usr/sbin:/sbin:/usr/bin:/bin#g" \
-              ${D}${sysconfdir}/profile
-
     fi
 }
 
